@@ -7,11 +7,11 @@ position: Consumer
 access: 3rd-Party
 image: https://kinlane-productions2.s3.amazonaws.com/apis-json/apis-json-logo.jpg
 tags:
-  - Security
   - Authentication
   - Authorization
-  - Java
   - Cryptography
+  - Java
+  - Security
 created: '2026-03-16'
 modified: '2026-03-16'
 url: >-
@@ -24,9 +24,9 @@ apis:
       Shiro provides a Java API for authentication (login/logout), authorization (access control), cryptography (hashing/encryption), and session management, with support for web applications, REST APIs, and standalone applications.
     humanURL: https://shiro.apache.org/documentation.html
     tags:
+      - Authentication
       - Java
       - Security
-      - Authentication
     properties:
       - type: Documentation
         url: https://shiro.apache.org/documentation.html
