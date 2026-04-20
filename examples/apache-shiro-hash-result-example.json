@@ -1,0 +1,6 @@
+{
+  "hash": "example",
+  "salt": "example",
+  "algorithm": "example",
+  "iterations": 1234
+}

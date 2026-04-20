@@ -1,0 +1,5 @@
+{
+  "password": "example",
+  "algorithm": "MD5",
+  "iterations": 1234
+}

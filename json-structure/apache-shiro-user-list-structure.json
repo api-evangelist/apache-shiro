@@ -1,0 +1,18 @@
+{
+  "$schema": "https://json-structure.org/meta/core/v0/#",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/apache-shiro/refs/heads/main/json-structure/apache-shiro-user-list-structure.json",
+  "description": "List of users",
+  "type": "object",
+  "properties": {
+    "users": {
+      "type": "array",
+      "items": {
+        "$ref": "#/components/schemas/User"
+      }
+    },
+    "total": {
+      "type": "int32"
+    }
+  },
+  "name": "UserList"
+}

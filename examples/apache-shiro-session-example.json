@@ -1,0 +1,8 @@
+{
+  "id": "500123",
+  "startTimestamp": "2026-04-19T10:00:00Z",
+  "lastAccessTime": "2026-04-19T10:00:00Z",
+  "timeout": 1234,
+  "host": "example",
+  "expired": true
+}

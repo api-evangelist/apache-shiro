@@ -1,0 +1,32 @@
+{
+  "$schema": "https://json-structure.org/meta/core/v0/#",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/apache-shiro/refs/heads/main/json-structure/apache-shiro-hash-request-structure.json",
+  "description": "Password hashing request",
+  "type": "object",
+  "properties": {
+    "password": {
+      "type": "string",
+      "description": "Plain text password to hash"
+    },
+    "algorithm": {
+      "type": "string",
+      "enum": [
+        "MD5",
+        "SHA-1",
+        "SHA-256",
+        "SHA-512",
+        "Argon2",
+        "bcrypt"
+      ],
+      "description": "Hash algorithm to use"
+    },
+    "iterations": {
+      "type": "int32",
+      "description": "Number of hash iterations"
+    }
+  },
+  "required": [
+    "password"
+  ],
+  "name": "HashRequest"
+}

@@ -1,0 +1,9 @@
+{
+  "id": "500123",
+  "username": "example-name",
+  "email": "example",
+  "roles": [
+    "example"
+  ],
+  "locked": true
+}

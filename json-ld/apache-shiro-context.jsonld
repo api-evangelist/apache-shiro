@@ -1,0 +1,124 @@
+{
+  "@context": {
+    "@version": 1.1,
+    "shir": "https://shiro.apache.org/schema/",
+    "schema": "https://schema.org/",
+    "xsd": "http://www.w3.org/2001/XMLSchema#",
+    "LoginRequest": "shir:LoginRequest",
+    "LoginResponse": "shir:LoginResponse",
+    "TokenResponse": "shir:TokenResponse",
+    "Session": "shir:Session",
+    "PermissionCheckRequest": "shir:PermissionCheckRequest",
+    "PermissionCheckResult": "shir:PermissionCheckResult",
+    "RoleList": "shir:RoleList",
+    "UserList": "shir:UserList",
+    "User": "shir:User",
+    "UserRequest": "shir:UserRequest",
+    "HashRequest": "shir:HashRequest",
+    "HashResult": "shir:HashResult",
+    "username": {
+      "@id": "shir:username",
+      "@type": "xsd:string"
+    },
+    "password": {
+      "@id": "shir:password",
+      "@type": "xsd:string"
+    },
+    "rememberMe": {
+      "@id": "shir:rememberMe",
+      "@type": "xsd:boolean"
+    },
+    "sessionId": {
+      "@id": "shir:sessionId",
+      "@type": "xsd:string"
+    },
+    "principal": {
+      "@id": "shir:principal",
+      "@type": "xsd:string"
+    },
+    "roles": {
+      "@id": "shir:roles",
+      "@container": "@set"
+    },
+    "permissions": {
+      "@id": "shir:permissions",
+      "@container": "@set"
+    },
+    "token": {
+      "@id": "shir:token",
+      "@type": "xsd:string"
+    },
+    "tokenType": {
+      "@id": "shir:tokenType",
+      "@type": "xsd:string"
+    },
+    "expiresIn": {
+      "@id": "shir:expiresIn",
+      "@type": "xsd:integer"
+    },
+    "id": {
+      "@id": "shir:id",
+      "@type": "xsd:string"
+    },
+    "startTimestamp": {
+      "@id": "shir:startTimestamp",
+      "@type": "xsd:string"
+    },
+    "lastAccessTime": {
+      "@id": "shir:lastAccessTime",
+      "@type": "xsd:string"
+    },
+    "timeout": {
+      "@id": "shir:timeout",
+      "@type": "xsd:integer"
+    },
+    "host": {
+      "@id": "shir:host",
+      "@type": "xsd:string"
+    },
+    "expired": {
+      "@id": "shir:expired",
+      "@type": "xsd:boolean"
+    },
+    "permission": {
+      "@id": "shir:permission",
+      "@type": "xsd:string"
+    },
+    "permitted": {
+      "@id": "shir:permitted",
+      "@type": "xsd:boolean"
+    },
+    "users": {
+      "@id": "shir:users",
+      "@container": "@set"
+    },
+    "total": {
+      "@id": "shir:total",
+      "@type": "xsd:integer"
+    },
+    "email": {
+      "@id": "shir:email",
+      "@type": "xsd:string"
+    },
+    "locked": {
+      "@id": "shir:locked",
+      "@type": "xsd:boolean"
+    },
+    "algorithm": {
+      "@id": "shir:algorithm",
+      "@type": "xsd:string"
+    },
+    "iterations": {
+      "@id": "shir:iterations",
+      "@type": "xsd:integer"
+    },
+    "hash": {
+      "@id": "shir:hash",
+      "@type": "xsd:string"
+    },
+    "salt": {
+      "@id": "shir:salt",
+      "@type": "xsd:string"
+    }
+  }
+}

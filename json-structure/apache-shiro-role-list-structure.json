@@ -1,0 +1,20 @@
+{
+  "$schema": "https://json-structure.org/meta/core/v0/#",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/apache-shiro/refs/heads/main/json-structure/apache-shiro-role-list-structure.json",
+  "description": "List of roles for the current user",
+  "type": "object",
+  "properties": {
+    "principal": {
+      "type": "string",
+      "description": "Current principal"
+    },
+    "roles": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "description": "Assigned roles"
+    }
+  },
+  "name": "RoleList"
+}

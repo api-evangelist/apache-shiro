@@ -1,0 +1,21 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/apache-shiro/refs/heads/main/json-schema/apache-shiro-permission-check-result-schema.json",
+  "title": "PermissionCheckResult",
+  "description": "Result of permission check",
+  "type": "object",
+  "properties": {
+    "permission": {
+      "type": "string",
+      "description": "Checked permission string"
+    },
+    "permitted": {
+      "type": "boolean",
+      "description": "Whether the subject has the permission"
+    },
+    "principal": {
+      "type": "string",
+      "description": "Subject being checked"
+    }
+  }
+}

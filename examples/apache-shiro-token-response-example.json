@@ -1,0 +1,6 @@
+{
+  "token": "example",
+  "tokenType": "example",
+  "expiresIn": 1234,
+  "principal": "example"
+}

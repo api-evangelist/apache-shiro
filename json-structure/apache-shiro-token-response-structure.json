@@ -1,0 +1,25 @@
+{
+  "$schema": "https://json-structure.org/meta/core/v0/#",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/apache-shiro/refs/heads/main/json-structure/apache-shiro-token-response-structure.json",
+  "description": "JWT or token-based authentication response",
+  "type": "object",
+  "properties": {
+    "token": {
+      "type": "string",
+      "description": "Authentication token"
+    },
+    "tokenType": {
+      "type": "string",
+      "description": "Token type (e.g. Bearer)"
+    },
+    "expiresIn": {
+      "type": "int32",
+      "description": "Token expiry in seconds"
+    },
+    "principal": {
+      "type": "string",
+      "description": "Authenticated principal"
+    }
+  },
+  "name": "TokenResponse"
+}

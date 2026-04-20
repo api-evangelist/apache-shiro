@@ -1,0 +1,16 @@
+{
+  "$schema": "https://json-structure.org/meta/core/v0/#",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/apache-shiro/refs/heads/main/json-structure/apache-shiro-permission-check-request-structure.json",
+  "description": "Permission check request",
+  "type": "object",
+  "properties": {
+    "permission": {
+      "type": "string",
+      "description": "Shiro permission string (e.g. printer:print, user:edit:123)"
+    }
+  },
+  "required": [
+    "permission"
+  ],
+  "name": "PermissionCheckRequest"
+}

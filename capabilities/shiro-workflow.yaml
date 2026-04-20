@@ -1,0 +1,67 @@
+name: Apache Shiro Security Workflow
+description: Workflow capability for authentication, authorization, and session management using Apache Shiro.
+version: 1.0.0-alpha1
+apis:
+  - name: Apache Shiro REST API
+    url: https://raw.githubusercontent.com/api-evangelist/apache-shiro/refs/heads/main/apis.yml
+shared:
+  - url: capabilities/shared/shiro-api.yaml
+workflow:
+  name: shiro-workflow
+  description: Authenticate users, check permissions, and manage sessions with Apache Shiro.
+  steps:
+    - name: login
+      description: Authenticate user credentials
+      api: Apache Shiro REST API
+      operation: login
+    - name: check-permission
+      description: Verify user has required permission
+      api: Apache Shiro REST API
+      operation: checkPermission
+    - name: get-roles
+      description: Get current user roles
+      api: Apache Shiro REST API
+      operation: getCurrentRoles
+    - name: logout
+      description: Invalidate user session
+      api: Apache Shiro REST API
+      operation: logout
+exposes:
+  - type: rest
+    port: 8080
+    paths:
+      - /auth/login
+      - /auth/logout
+      - /auth/token
+      - /sessions/{sessionId}
+      - /auth/check
+      - /auth/roles
+      - /users
+      - /crypto/hash
+  - type: mcp
+    port: 9090
+    tools:
+      - name: login
+        description: Authenticate user
+        operation: login
+      - name: logout
+        description: Logout user
+        operation: logout
+      - name: generate-token
+        description: Generate auth token
+        operation: generateToken
+      - name: check-permission
+        description: Check user permission
+        operation: checkPermission
+      - name: get-current-roles
+        description: Get current user roles
+        operation: getCurrentRoles
+      - name: list-users
+        description: List users
+        operation: listUsers
+      - name: create-user
+        description: Create a user
+        operation: createUser
+      - name: hash-password
+        description: Hash a password securely
+        operation: hashPassword

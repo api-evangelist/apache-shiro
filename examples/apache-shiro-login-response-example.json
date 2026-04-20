@@ -1,0 +1,10 @@
+{
+  "sessionId": "500123",
+  "principal": "example",
+  "roles": [
+    "example"
+  ],
+  "permissions": [
+    "example"
+  ]
+}

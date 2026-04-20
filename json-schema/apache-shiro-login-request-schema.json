@@ -1,0 +1,25 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/apache-shiro/refs/heads/main/json-schema/apache-shiro-login-request-schema.json",
+  "title": "LoginRequest",
+  "description": "User login credentials",
+  "type": "object",
+  "properties": {
+    "username": {
+      "type": "string",
+      "description": "Username or email"
+    },
+    "password": {
+      "type": "string",
+      "description": "User password"
+    },
+    "rememberMe": {
+      "type": "boolean",
+      "description": "Whether to set remember-me cookie"
+    }
+  },
+  "required": [
+    "username",
+    "password"
+  ]
+}

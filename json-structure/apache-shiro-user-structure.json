@@ -1,0 +1,32 @@
+{
+  "$schema": "https://json-structure.org/meta/core/v0/#",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/apache-shiro/refs/heads/main/json-structure/apache-shiro-user-structure.json",
+  "description": "User account",
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "string",
+      "description": "User identifier"
+    },
+    "username": {
+      "type": "string",
+      "description": "Username"
+    },
+    "email": {
+      "type": "string",
+      "description": "Email address"
+    },
+    "roles": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "description": "Assigned roles"
+    },
+    "locked": {
+      "type": "boolean",
+      "description": "Whether the account is locked"
+    }
+  },
+  "name": "User"
+}

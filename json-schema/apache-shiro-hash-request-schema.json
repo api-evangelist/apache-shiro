@@ -1,0 +1,32 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/apache-shiro/refs/heads/main/json-schema/apache-shiro-hash-request-schema.json",
+  "title": "HashRequest",
+  "description": "Password hashing request",
+  "type": "object",
+  "properties": {
+    "password": {
+      "type": "string",
+      "description": "Plain text password to hash"
+    },
+    "algorithm": {
+      "type": "string",
+      "enum": [
+        "MD5",
+        "SHA-1",
+        "SHA-256",
+        "SHA-512",
+        "Argon2",
+        "bcrypt"
+      ],
+      "description": "Hash algorithm to use"
+    },
+    "iterations": {
+      "type": "integer",
+      "description": "Number of hash iterations"
+    }
+  },
+  "required": [
+    "password"
+  ]
+}

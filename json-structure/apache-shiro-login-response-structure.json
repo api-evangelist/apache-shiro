@@ -1,0 +1,31 @@
+{
+  "$schema": "https://json-structure.org/meta/core/v0/#",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/apache-shiro/refs/heads/main/json-structure/apache-shiro-login-response-structure.json",
+  "description": "Successful authentication response",
+  "type": "object",
+  "properties": {
+    "sessionId": {
+      "type": "string",
+      "description": "Shiro session identifier"
+    },
+    "principal": {
+      "type": "string",
+      "description": "Authenticated principal name"
+    },
+    "roles": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "description": "Roles assigned to the user"
+    },
+    "permissions": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "description": "Explicit permissions granted to the user"
+    }
+  },
+  "name": "LoginResponse"
+}

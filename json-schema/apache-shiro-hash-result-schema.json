@@ -1,0 +1,25 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/apache-shiro/refs/heads/main/json-schema/apache-shiro-hash-result-schema.json",
+  "title": "HashResult",
+  "description": "Password hash result",
+  "type": "object",
+  "properties": {
+    "hash": {
+      "type": "string",
+      "description": "Hashed password value"
+    },
+    "salt": {
+      "type": "string",
+      "description": "Salt used for hashing"
+    },
+    "algorithm": {
+      "type": "string",
+      "description": "Algorithm used"
+    },
+    "iterations": {
+      "type": "integer",
+      "description": "Iterations applied"
+    }
+  }
+}

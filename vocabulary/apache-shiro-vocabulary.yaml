@@ -1,0 +1,61 @@
+name: Apache Shiro Vocabulary
+description: Unified taxonomy mapping security resources, actions, workflows, and personas for Apache Shiro.
+version: 1.0.0
+operational:
+  apis:
+    - name: Apache Shiro REST API
+      description: REST API for authentication, authorization, and session management
+  resources:
+    - name: Subject
+      description: Current executing user and their security state
+    - name: Principal
+      description: Identifying attribute for a Subject (username, email, ID)
+    - name: Session
+      description: Shiro session tracking user activity
+    - name: Role
+      description: Named collection of permissions
+    - name: Permission
+      description: Fine-grained access control statement
+    - name: Realm
+      description: Security data source (database, LDAP, properties file)
+  actions:
+    - name: Authenticate
+      description: Verify user identity with credentials
+    - name: Authorize
+      description: Check permissions and roles
+    - name: Encrypt
+      description: Encrypt and hash sensitive data
+    - name: Manage Sessions
+      description: Create, access, and invalidate sessions
+  authentication:
+    - name: Username/Password
+      description: Standard credential authentication
+    - name: Remember-Me
+      description: Persistent login via remember-me cookie
+    - name: JWT
+      description: Stateless token-based authentication
+capability:
+  workflows:
+    - name: Authentication Workflow
+      description: End-to-end user login, session, and logout workflow
+    - name: Authorization Workflow
+      description: Permission and role checking for protected resources
+  personas:
+    - name: Application Developer
+      description: Developer integrating Shiro security into Java applications
+    - name: Security Administrator
+      description: Administrator managing users, roles, and permissions
+  domains:
+    - name: Authentication
+      description: Identity verification and credential management
+    - name: Authorization
+      description: Access control and permission enforcement
+    - name: Cryptography
+      description: Password hashing and data encryption
+  crossReference:
+    - name: Spring Security
+      description: Alternative Java security framework
+    - name: OAuth 2.0
+      description: Delegation protocol complementing Shiro authentication
+    - name: LDAP
+      description: Common backend realm for Shiro user storage

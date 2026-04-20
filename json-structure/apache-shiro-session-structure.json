@@ -1,0 +1,33 @@
+{
+  "$schema": "https://json-structure.org/meta/core/v0/#",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/apache-shiro/refs/heads/main/json-structure/apache-shiro-session-structure.json",
+  "description": "Shiro session information",
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "string",
+      "description": "Session identifier"
+    },
+    "startTimestamp": {
+      "type": "datetime",
+      "description": "Session creation time"
+    },
+    "lastAccessTime": {
+      "type": "datetime",
+      "description": "Last access time"
+    },
+    "timeout": {
+      "type": "int64",
+      "description": "Session timeout in milliseconds"
+    },
+    "host": {
+      "type": "string",
+      "description": "Host of the session initiator"
+    },
+    "expired": {
+      "type": "boolean",
+      "description": "Whether the session has expired"
+    }
+  },
+  "name": "Session"
+}

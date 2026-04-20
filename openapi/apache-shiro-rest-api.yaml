@@ -1,0 +1,390 @@
+openapi: 3.0.3
+info:
+  title: Apache Shiro REST API
+  description: Apache Shiro is a powerful Java security framework that performs authentication, authorization, cryptography, and session management. This OpenAPI represents the logical REST surface of a Shiro-secured application providing auth and session management endpoints.
+  version: 2.0.0
+  contact:
+    name: Apache Shiro
+    url: https://shiro.apache.org/
+  license:
+    name: Apache 2.0
+    url: https://www.apache.org/licenses/LICENSE-2.0
+servers:
+  - url: https://app.example.com/api
+    description: Shiro-secured Application API
+
+paths:
+  /auth/login:
+    post:
+      operationId: login
+      summary: Apache Shiro Login
+      description: Authenticate a user with username and password credentials using Apache Shiro.
+      tags: [Authentication]
+      x-microcks-operation:
+        dispatcher: RANDOM
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/LoginRequest'
+      responses:
+        '200':
+          description: Authentication successful
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/LoginResponse'
+        '401':
+          description: Authentication failed
+  /auth/logout:
+    post:
+      operationId: logout
+      summary: Apache Shiro Logout
+      description: Invalidate the current Shiro session and log out the authenticated user.
+      tags: [Authentication]
+      x-microcks-operation:
+        dispatcher: RANDOM
+      responses:
+        '200':
+          description: Logout successful
+  /auth/token:
+    post:
+      operationId: generateToken
+      summary: Apache Shiro Generate Token
+      description: Generate a JWT or remember-me token for stateless authentication.
+      tags: [Authentication]
+      x-microcks-operation:
+        dispatcher: RANDOM
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/LoginRequest'
+      responses:
+        '200':
+          description: Token generated
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TokenResponse'
+  /sessions/{sessionId}:
+    get:
+      operationId: getSession
+      summary: Apache Shiro Get Session
+      description: Retrieve information about an active Shiro session.
+      tags: [Sessions]
+      x-microcks-operation:
+        dispatcher: URI_PARTS
+        dispatcherRules: sessionId
+      parameters:
+        - name: sessionId
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Session details
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Session'
+    delete:
+      operationId: invalidateSession
+      summary: Apache Shiro Invalidate Session
+      description: Invalidate an active Shiro session.
+      tags: [Sessions]
+      x-microcks-operation:
+        dispatcher: URI_PARTS
+        dispatcherRules: sessionId
+      parameters:
+        - name: sessionId
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Session invalidated
+  /auth/check:
+    post:
+      operationId: checkPermission
+      summary: Apache Shiro Check Permission
+      description: Check if the current authenticated subject has a specific permission.
+      tags: [Authorization]
+      x-microcks-operation:
+        dispatcher: RANDOM
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PermissionCheckRequest'
+      responses:
+        '200':
+          description: Permission check result
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PermissionCheckResult'
+  /auth/roles:
+    get:
+      operationId: getCurrentRoles
+      summary: Apache Shiro Get Current Roles
+      description: Get all roles assigned to the currently authenticated subject.
+      tags: [Authorization]
+      x-microcks-operation:
+        dispatcher: RANDOM
+      responses:
+        '200':
+          description: Current user roles
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/RoleList'
+  /users:
+    get:
+      operationId: listUsers
+      summary: Apache Shiro List Users
+      description: List all users in the Shiro user store.
+      tags: [Users]
+      x-microcks-operation:
+        dispatcher: RANDOM
+      responses:
+        '200':
+          description: List of users
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UserList'
+    post:
+      operationId: createUser
+      summary: Apache Shiro Create User
+      description: Create a new user in the Shiro user store.
+      tags: [Users]
+      x-microcks-operation:
+        dispatcher: RANDOM
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/UserRequest'
+      responses:
+        '201':
+          description: User created
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/User'
+  /crypto/hash:
+    post:
+      operationId: hashPassword
+      summary: Apache Shiro Hash Password
+      description: Hash a password using Shiro cryptography with configurable algorithm and salt.
+      tags: [Cryptography]
+      x-microcks-operation:
+        dispatcher: RANDOM
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/HashRequest'
+      responses:
+        '200':
+          description: Hash result
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HashResult'
+
+components:
+  schemas:
+    LoginRequest:
+      type: object
+      description: User login credentials
+      required: [username, password]
+      properties:
+        username:
+          type: string
+          description: Username or email
+        password:
+          type: string
+          description: User password
+        rememberMe:
+          type: boolean
+          description: Whether to set remember-me cookie
+    LoginResponse:
+      type: object
+      description: Successful authentication response
+      properties:
+        sessionId:
+          type: string
+          description: Shiro session identifier
+        principal:
+          type: string
+          description: Authenticated principal name
+        roles:
+          type: array
+          items:
+            type: string
+          description: Roles assigned to the user
+        permissions:
+          type: array
+          items:
+            type: string
+          description: Explicit permissions granted to the user
+    TokenResponse:
+      type: object
+      description: JWT or token-based authentication response
+      properties:
+        token:
+          type: string
+          description: Authentication token
+        tokenType:
+          type: string
+          description: Token type (e.g. Bearer)
+        expiresIn:
+          type: integer
+          description: Token expiry in seconds
+        principal:
+          type: string
+          description: Authenticated principal
+    Session:
+      type: object
+      description: Shiro session information
+      properties:
+        id:
+          type: string
+          description: Session identifier
+        startTimestamp:
+          type: string
+          format: date-time
+          description: Session creation time
+        lastAccessTime:
+          type: string
+          format: date-time
+          description: Last access time
+        timeout:
+          type: integer
+          format: int64
+          description: Session timeout in milliseconds
+        host:
+          type: string
+          description: Host of the session initiator
+        expired:
+          type: boolean
+          description: Whether the session has expired
+    PermissionCheckRequest:
+      type: object
+      description: Permission check request
+      required: [permission]
+      properties:
+        permission:
+          type: string
+          description: Shiro permission string (e.g. printer:print, user:edit:123)
+    PermissionCheckResult:
+      type: object
+      description: Result of permission check
+      properties:
+        permission:
+          type: string
+          description: Checked permission string
+        permitted:
+          type: boolean
+          description: Whether the subject has the permission
+        principal:
+          type: string
+          description: Subject being checked
+    RoleList:
+      type: object
+      description: List of roles for the current user
+      properties:
+        principal:
+          type: string
+          description: Current principal
+        roles:
+          type: array
+          items:
+            type: string
+          description: Assigned roles
+    UserList:
+      type: object
+      description: List of users
+      properties:
+        users:
+          type: array
+          items:
+            $ref: '#/components/schemas/User'
+        total:
+          type: integer
+    User:
+      type: object
+      description: User account
+      properties:
+        id:
+          type: string
+          description: User identifier
+        username:
+          type: string
+          description: Username
+        email:
+          type: string
+          description: Email address
+        roles:
+          type: array
+          items:
+            type: string
+          description: Assigned roles
+        locked:
+          type: boolean
+          description: Whether the account is locked
+    UserRequest:
+      type: object
+      description: Request to create a user
+      required: [username, password]
+      properties:
+        username:
+          type: string
+        password:
+          type: string
+        email:
+          type: string
+        roles:
+          type: array
+          items:
+            type: string
+    HashRequest:
+      type: object
+      description: Password hashing request
+      required: [password]
+      properties:
+        password:
+          type: string
+          description: Plain text password to hash
+        algorithm:
+          type: string
+          enum: [MD5, SHA-1, SHA-256, SHA-512, Argon2, bcrypt]
+          description: Hash algorithm to use
+        iterations:
+          type: integer
+          description: Number of hash iterations
+    HashResult:
+      type: object
+      description: Password hash result
+      properties:
+        hash:
+          type: string
+          description: Hashed password value
+        salt:
+          type: string
+          description: Salt used for hashing
+        algorithm:
+          type: string
+          description: Algorithm used
+        iterations:
+          type: integer
+          description: Iterations applied
