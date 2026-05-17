@@ -52,7 +52,7 @@ common:
   url: vocabulary/apache-shiro-vocabulary.yaml
 - type: NaftikoCapability
   url: capabilities/shiro-workflow.yaml
-- type: JSON-LD
+- type: JSONLD
   url: json-ld/apache-shiro-context.jsonld
 - type: Features
   data:
