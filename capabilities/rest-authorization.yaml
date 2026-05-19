@@ -1,0 +1,109 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: Apache Shiro REST API — Authorization
+  description: 'Apache Shiro REST API — Authorization. 2 operations. Lead operation: Apache Shiro Check Permission. Self-contained
+    Naftiko capability covering one Apache Shiro business surface.'
+  tags:
+  - Apache Shiro
+  - Authorization
+  created: '2026-05-19'
+  modified: '2026-05-19'
+binds:
+- namespace: env
+  keys:
+    APACHE_SHIRO_API_KEY: APACHE_SHIRO_API_KEY
+capability:
+  consumes:
+  - type: http
+    namespace: rest-authorization
+    baseUri: https://app.example.com/api
+    description: Apache Shiro REST API — Authorization business capability. Self-contained, no shared references.
+    resources:
+    - name: auth-check
+      path: /auth/check
+      operations:
+      - name: checkpermission
+        method: POST
+        description: Apache Shiro Check Permission
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+    - name: auth-roles
+      path: /auth/roles
+      operations:
+      - name: getcurrentroles
+        method: GET
+        description: Apache Shiro Get Current Roles
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+  exposes:
+  - type: rest
+    namespace: rest-authorization-rest
+    port: 8080
+    description: REST adapter for Apache Shiro REST API — Authorization. One Spectral-compliant resource per consumed operation,
+      prefixed with /v1.
+    resources:
+    - path: /v1/auth/check
+      name: auth-check
+      description: REST surface for auth-check.
+      operations:
+      - method: POST
+        name: checkpermission
+        description: Apache Shiro Check Permission
+        call: rest-authorization.checkpermission
+        with:
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/auth/roles
+      name: auth-roles
+      description: REST surface for auth-roles.
+      operations:
+      - method: GET
+        name: getcurrentroles
+        description: Apache Shiro Get Current Roles
+        call: rest-authorization.getcurrentroles
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    namespace: rest-authorization-mcp
+    port: 9090
+    transport: http
+    description: MCP adapter for Apache Shiro REST API — Authorization. One tool per consumed operation, routed inline through
+      this capability's consumes block.
+    tools:
+    - name: apache-shiro-check-permission
+      description: Apache Shiro Check Permission
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: false
+      call: rest-authorization.checkpermission
+      with:
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: apache-shiro-get-current-roles
+      description: Apache Shiro Get Current Roles
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: rest-authorization.getcurrentroles
+      outputParameters:
+      - type: object
+        mapping: $.

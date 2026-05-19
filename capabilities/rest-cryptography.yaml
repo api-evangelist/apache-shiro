@@ -1,0 +1,77 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: Apache Shiro REST API — Cryptography
+  description: 'Apache Shiro REST API — Cryptography. 1 operations. Lead operation: Apache Shiro Hash Password. Self-contained
+    Naftiko capability covering one Apache Shiro business surface.'
+  tags:
+  - Apache Shiro
+  - Cryptography
+  created: '2026-05-19'
+  modified: '2026-05-19'
+binds:
+- namespace: env
+  keys:
+    APACHE_SHIRO_API_KEY: APACHE_SHIRO_API_KEY
+capability:
+  consumes:
+  - type: http
+    namespace: rest-cryptography
+    baseUri: https://app.example.com/api
+    description: Apache Shiro REST API — Cryptography business capability. Self-contained, no shared references.
+    resources:
+    - name: crypto-hash
+      path: /crypto/hash
+      operations:
+      - name: hashpassword
+        method: POST
+        description: Apache Shiro Hash Password
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+  exposes:
+  - type: rest
+    namespace: rest-cryptography-rest
+    port: 8080
+    description: REST adapter for Apache Shiro REST API — Cryptography. One Spectral-compliant resource per consumed operation,
+      prefixed with /v1.
+    resources:
+    - path: /v1/crypto/hash
+      name: crypto-hash
+      description: REST surface for crypto-hash.
+      operations:
+      - method: POST
+        name: hashpassword
+        description: Apache Shiro Hash Password
+        call: rest-cryptography.hashpassword
+        with:
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    namespace: rest-cryptography-mcp
+    port: 9090
+    transport: http
+    description: MCP adapter for Apache Shiro REST API — Cryptography. One tool per consumed operation, routed inline through
+      this capability's consumes block.
+    tools:
+    - name: apache-shiro-hash-password
+      description: Apache Shiro Hash Password
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: rest-cryptography.hashpassword
+      with:
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
