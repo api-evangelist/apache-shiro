@@ -36,15 +36,15 @@ apis:
     url: https://shiro.apache.org/documentation.html
   - type: OpenAPI
     url: openapi/apache-shiro-rest-api.yaml
-  - type: NaftikoCapability
+  - type: X-NaftikoCapability
     url: capabilities/rest-authentication.yaml
-  - type: NaftikoCapability
+  - type: X-NaftikoCapability
     url: capabilities/rest-authorization.yaml
-  - type: NaftikoCapability
+  - type: X-NaftikoCapability
     url: capabilities/rest-cryptography.yaml
-  - type: NaftikoCapability
+  - type: X-NaftikoCapability
     url: capabilities/rest-sessions.yaml
-  - type: NaftikoCapability
+  - type: X-NaftikoCapability
     url: capabilities/rest-users.yaml
 maintainers:
 - FN: Kin Lane
