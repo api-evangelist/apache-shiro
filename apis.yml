@@ -50,6 +50,10 @@ maintainers:
 - FN: Kin Lane
   email: info@apievangelist.com
 common:
+- type: VulnerabilityDisclosure
+  url: security/apache-shiro-vulnerability-disclosure.yml
+- type: DomainSecurity
+  url: security/apache-shiro-domain-security.yml
 - type: GitHubOrganization
   url: https://github.com/apache/shiro
 - type: Documentation
@@ -98,3 +102,5 @@ common:
     description: Database-backed realm for user and permission storage
   - name: Hazelcast
     description: Distributed session management with Hazelcast
+- type: Blog
+  url: https://shiro.apache.org/news
