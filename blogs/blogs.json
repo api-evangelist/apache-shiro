@@ -1,0 +1,14 @@
+{
+  "repo": "apache-shiro",
+  "feeds": [
+    {
+      "source": "https://shiro.apache.org/news",
+      "feed_url": "https://shiro.apache.org/news",
+      "title": "Apache Shiro News",
+      "saved": 0,
+      "error": "parse_failed"
+    }
+  ],
+  "fetched": "2026-07-11T11:43:46Z",
+  "post_count": 14
+}
