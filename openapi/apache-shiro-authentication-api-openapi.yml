@@ -1,0 +1,129 @@
+openapi: 3.0.3
+info:
+  title: Apache Shiro REST Authentication API
+  description: Apache Shiro is a powerful Java security framework that performs authentication, authorization, cryptography, and session management. This OpenAPI represents the logical REST surface of a Shiro-secured application providing auth and session management endpoints.
+  version: 2.0.0
+  contact:
+    name: Apache Shiro
+    url: https://shiro.apache.org/
+  license:
+    name: Apache 2.0
+    url: https://www.apache.org/licenses/LICENSE-2.0
+servers:
+- url: https://app.example.com/api
+  description: Shiro-secured Application API
+tags:
+- name: Authentication
+paths:
+  /auth/login:
+    post:
+      operationId: login
+      summary: Apache Shiro Login
+      description: Authenticate a user with username and password credentials using Apache Shiro.
+      tags:
+      - Authentication
+      x-microcks-operation:
+        dispatcher: RANDOM
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/LoginRequest'
+      responses:
+        '200':
+          description: Authentication successful
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/LoginResponse'
+        '401':
+          description: Authentication failed
+  /auth/logout:
+    post:
+      operationId: logout
+      summary: Apache Shiro Logout
+      description: Invalidate the current Shiro session and log out the authenticated user.
+      tags:
+      - Authentication
+      x-microcks-operation:
+        dispatcher: RANDOM
+      responses:
+        '200':
+          description: Logout successful
+  /auth/token:
+    post:
+      operationId: generateToken
+      summary: Apache Shiro Generate Token
+      description: Generate a JWT or remember-me token for stateless authentication.
+      tags:
+      - Authentication
+      x-microcks-operation:
+        dispatcher: RANDOM
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/LoginRequest'
+      responses:
+        '200':
+          description: Token generated
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TokenResponse'
+components:
+  schemas:
+    LoginRequest:
+      type: object
+      description: User login credentials
+      required:
+      - username
+      - password
+      properties:
+        username:
+          type: string
+          description: Username or email
+        password:
+          type: string
+          description: User password
+        rememberMe:
+          type: boolean
+          description: Whether to set remember-me cookie
+    TokenResponse:
+      type: object
+      description: JWT or token-based authentication response
+      properties:
+        token:
+          type: string
+          description: Authentication token
+        tokenType:
+          type: string
+          description: Token type (e.g. Bearer)
+        expiresIn:
+          type: integer
+          description: Token expiry in seconds
+        principal:
+          type: string
+          description: Authenticated principal
+    LoginResponse:
+      type: object
+      description: Successful authentication response
+      properties:
+        sessionId:
+          type: string
+          description: Shiro session identifier
+        principal:
+          type: string
+          description: Authenticated principal name
+        roles:
+          type: array
+          items:
+            type: string
+          description: Roles assigned to the user
+        permissions:
+          type: array
+          items:
+            type: string
+          description: Explicit permissions granted to the user

@@ -1,0 +1,79 @@
+openapi: 3.0.3
+info:
+  title: Apache Shiro REST Authentication Cryptography API
+  description: Apache Shiro is a powerful Java security framework that performs authentication, authorization, cryptography, and session management. This OpenAPI represents the logical REST surface of a Shiro-secured application providing auth and session management endpoints.
+  version: 2.0.0
+  contact:
+    name: Apache Shiro
+    url: https://shiro.apache.org/
+  license:
+    name: Apache 2.0
+    url: https://www.apache.org/licenses/LICENSE-2.0
+servers:
+- url: https://app.example.com/api
+  description: Shiro-secured Application API
+tags:
+- name: Cryptography
+paths:
+  /crypto/hash:
+    post:
+      operationId: hashPassword
+      summary: Apache Shiro Hash Password
+      description: Hash a password using Shiro cryptography with configurable algorithm and salt.
+      tags:
+      - Cryptography
+      x-microcks-operation:
+        dispatcher: RANDOM
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/HashRequest'
+      responses:
+        '200':
+          description: Hash result
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HashResult'
+components:
+  schemas:
+    HashRequest:
+      type: object
+      description: Password hashing request
+      required:
+      - password
+      properties:
+        password:
+          type: string
+          description: Plain text password to hash
+        algorithm:
+          type: string
+          enum:
+          - MD5
+          - SHA-1
+          - SHA-256
+          - SHA-512
+          - Argon2
+          - bcrypt
+          description: Hash algorithm to use
+        iterations:
+          type: integer
+          description: Number of hash iterations
+    HashResult:
+      type: object
+      description: Password hash result
+      properties:
+        hash:
+          type: string
+          description: Hashed password value
+        salt:
+          type: string
+          description: Salt used for hashing
+        algorithm:
+          type: string
+          description: Algorithm used
+        iterations:
+          type: integer
+          description: Iterations applied

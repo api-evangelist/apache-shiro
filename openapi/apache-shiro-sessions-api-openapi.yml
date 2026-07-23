@@ -1,0 +1,85 @@
+openapi: 3.0.3
+info:
+  title: Apache Shiro REST Authentication Sessions API
+  description: Apache Shiro is a powerful Java security framework that performs authentication, authorization, cryptography, and session management. This OpenAPI represents the logical REST surface of a Shiro-secured application providing auth and session management endpoints.
+  version: 2.0.0
+  contact:
+    name: Apache Shiro
+    url: https://shiro.apache.org/
+  license:
+    name: Apache 2.0
+    url: https://www.apache.org/licenses/LICENSE-2.0
+servers:
+- url: https://app.example.com/api
+  description: Shiro-secured Application API
+tags:
+- name: Sessions
+paths:
+  /sessions/{sessionId}:
+    get:
+      operationId: getSession
+      summary: Apache Shiro Get Session
+      description: Retrieve information about an active Shiro session.
+      tags:
+      - Sessions
+      x-microcks-operation:
+        dispatcher: URI_PARTS
+        dispatcherRules: sessionId
+      parameters:
+      - name: sessionId
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Session details
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Session'
+    delete:
+      operationId: invalidateSession
+      summary: Apache Shiro Invalidate Session
+      description: Invalidate an active Shiro session.
+      tags:
+      - Sessions
+      x-microcks-operation:
+        dispatcher: URI_PARTS
+        dispatcherRules: sessionId
+      parameters:
+      - name: sessionId
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Session invalidated
+components:
+  schemas:
+    Session:
+      type: object
+      description: Shiro session information
+      properties:
+        id:
+          type: string
+          description: Session identifier
+        startTimestamp:
+          type: string
+          format: date-time
+          description: Session creation time
+        lastAccessTime:
+          type: string
+          format: date-time
+          description: Last access time
+        timeout:
+          type: integer
+          format: int64
+          description: Session timeout in milliseconds
+        host:
+          type: string
+          description: Host of the session initiator
+        expired:
+          type: boolean
+          description: Whether the session has expired

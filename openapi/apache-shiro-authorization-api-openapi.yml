@@ -1,0 +1,91 @@
+openapi: 3.0.3
+info:
+  title: Apache Shiro REST Authentication Authorization API
+  description: Apache Shiro is a powerful Java security framework that performs authentication, authorization, cryptography, and session management. This OpenAPI represents the logical REST surface of a Shiro-secured application providing auth and session management endpoints.
+  version: 2.0.0
+  contact:
+    name: Apache Shiro
+    url: https://shiro.apache.org/
+  license:
+    name: Apache 2.0
+    url: https://www.apache.org/licenses/LICENSE-2.0
+servers:
+- url: https://app.example.com/api
+  description: Shiro-secured Application API
+tags:
+- name: Authorization
+paths:
+  /auth/check:
+    post:
+      operationId: checkPermission
+      summary: Apache Shiro Check Permission
+      description: Check if the current authenticated subject has a specific permission.
+      tags:
+      - Authorization
+      x-microcks-operation:
+        dispatcher: RANDOM
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PermissionCheckRequest'
+      responses:
+        '200':
+          description: Permission check result
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PermissionCheckResult'
+  /auth/roles:
+    get:
+      operationId: getCurrentRoles
+      summary: Apache Shiro Get Current Roles
+      description: Get all roles assigned to the currently authenticated subject.
+      tags:
+      - Authorization
+      x-microcks-operation:
+        dispatcher: RANDOM
+      responses:
+        '200':
+          description: Current user roles
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/RoleList'
+components:
+  schemas:
+    RoleList:
+      type: object
+      description: List of roles for the current user
+      properties:
+        principal:
+          type: string
+          description: Current principal
+        roles:
+          type: array
+          items:
+            type: string
+          description: Assigned roles
+    PermissionCheckRequest:
+      type: object
+      description: Permission check request
+      required:
+      - permission
+      properties:
+        permission:
+          type: string
+          description: Shiro permission string (e.g. printer:print, user:edit:123)
+    PermissionCheckResult:
+      type: object
+      description: Result of permission check
+      properties:
+        permission:
+          type: string
+          description: Checked permission string
+        permitted:
+          type: boolean
+          description: Whether the subject has the permission
+        principal:
+          type: string
+          description: Subject being checked

@@ -1,0 +1,104 @@
+openapi: 3.0.3
+info:
+  title: Apache Shiro REST Authentication Users API
+  description: Apache Shiro is a powerful Java security framework that performs authentication, authorization, cryptography, and session management. This OpenAPI represents the logical REST surface of a Shiro-secured application providing auth and session management endpoints.
+  version: 2.0.0
+  contact:
+    name: Apache Shiro
+    url: https://shiro.apache.org/
+  license:
+    name: Apache 2.0
+    url: https://www.apache.org/licenses/LICENSE-2.0
+servers:
+- url: https://app.example.com/api
+  description: Shiro-secured Application API
+tags:
+- name: Users
+paths:
+  /users:
+    get:
+      operationId: listUsers
+      summary: Apache Shiro List Users
+      description: List all users in the Shiro user store.
+      tags:
+      - Users
+      x-microcks-operation:
+        dispatcher: RANDOM
+      responses:
+        '200':
+          description: List of users
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UserList'
+    post:
+      operationId: createUser
+      summary: Apache Shiro Create User
+      description: Create a new user in the Shiro user store.
+      tags:
+      - Users
+      x-microcks-operation:
+        dispatcher: RANDOM
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/UserRequest'
+      responses:
+        '201':
+          description: User created
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/User'
+components:
+  schemas:
+    UserList:
+      type: object
+      description: List of users
+      properties:
+        users:
+          type: array
+          items:
+            $ref: '#/components/schemas/User'
+        total:
+          type: integer
+    UserRequest:
+      type: object
+      description: Request to create a user
+      required:
+      - username
+      - password
+      properties:
+        username:
+          type: string
+        password:
+          type: string
+        email:
+          type: string
+        roles:
+          type: array
+          items:
+            type: string
+    User:
+      type: object
+      description: User account
+      properties:
+        id:
+          type: string
+          description: User identifier
+        username:
+          type: string
+          description: Username
+        email:
+          type: string
+          description: Email address
+        roles:
+          type: array
+          items:
+            type: string
+          description: Assigned roles
+        locked:
+          type: boolean
+          description: Whether the account is locked
