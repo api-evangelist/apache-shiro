@@ -4,9 +4,21 @@ description: Apache Shiro is a powerful and easy-to-use Java security framework 
   cryptography, and session management. It provides a clean API for securing applications from the smallest mobile applications
   to the largest enterprise systems.
 type: Index
+accessModel:
+  pricing: freemium
+  onboarding: unknown
+  trial: false
+  try_now: false
+  public: false
+  label: Freemium
+  confidence: medium
+  source:
+  - plans
+  generated: '2026-07-22'
+  method: derived
 position: Consumer
 access: 3rd-Party
-image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
+image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/icons/apache-shiro.png
 tags:
 - Authentication
 - Authorization
@@ -20,22 +32,101 @@ modified: '2026-05-19'
 url: https://raw.githubusercontent.com/api-evangelist/apache-shiro/refs/heads/main/apis.yml
 specificationVersion: '0.19'
 apis:
-- aid: apache-shiro:apache-shiro
-  name: Apache Shiro
-  description: Shiro provides a Java API for authentication (login/logout), authorization (access control), cryptography (hashing/encryption),
-    and session management, with support for web applications, REST APIs, and standalone applications.
+- aid: apache-shiro:apache-shiro-authentication-api
+  name: Apache Shiro Authentication API
+  description: The Authentication API from Apache Shiro — 3 operation(s) for authentication.
   humanURL: https://shiro.apache.org/documentation.html
   tags:
   - Authentication
-  - Authorization
-  - REST
-  - Apache
-  - Open Source
   properties:
+  - type: OpenAPI
+    url: openapi/apache-shiro-authentication-api-openapi.yml
   - type: Documentation
     url: https://shiro.apache.org/documentation.html
+  - type: X-NaftikoCapability
+    url: capabilities/rest-authentication.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/rest-authorization.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/rest-cryptography.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/rest-sessions.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/rest-users.yaml
+- aid: apache-shiro:apache-shiro-authorization-api
+  name: Apache Shiro Authorization API
+  description: The Authorization API from Apache Shiro — 2 operation(s) for authorization.
+  humanURL: https://shiro.apache.org/documentation.html
+  tags:
+  - Authorization
+  properties:
   - type: OpenAPI
-    url: openapi/apache-shiro-rest-api.yaml
+    url: openapi/apache-shiro-authorization-api-openapi.yml
+  - type: Documentation
+    url: https://shiro.apache.org/documentation.html
+  - type: X-NaftikoCapability
+    url: capabilities/rest-authentication.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/rest-authorization.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/rest-cryptography.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/rest-sessions.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/rest-users.yaml
+- aid: apache-shiro:apache-shiro-cryptography-api
+  name: Apache Shiro Cryptography API
+  description: The Cryptography API from Apache Shiro — 1 operation(s) for cryptography.
+  humanURL: https://shiro.apache.org/documentation.html
+  tags:
+  - Cryptography
+  properties:
+  - type: OpenAPI
+    url: openapi/apache-shiro-cryptography-api-openapi.yml
+  - type: Documentation
+    url: https://shiro.apache.org/documentation.html
+  - type: X-NaftikoCapability
+    url: capabilities/rest-authentication.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/rest-authorization.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/rest-cryptography.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/rest-sessions.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/rest-users.yaml
+- aid: apache-shiro:apache-shiro-sessions-api
+  name: Apache Shiro Sessions API
+  description: The Sessions API from Apache Shiro — 1 operation(s) for sessions.
+  humanURL: https://shiro.apache.org/documentation.html
+  tags:
+  - Sessions
+  properties:
+  - type: OpenAPI
+    url: openapi/apache-shiro-sessions-api-openapi.yml
+  - type: Documentation
+    url: https://shiro.apache.org/documentation.html
+  - type: X-NaftikoCapability
+    url: capabilities/rest-authentication.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/rest-authorization.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/rest-cryptography.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/rest-sessions.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/rest-users.yaml
+- aid: apache-shiro:apache-shiro-users-api
+  name: Apache Shiro Users API
+  description: The Users API from Apache Shiro — 1 operation(s) for users.
+  humanURL: https://shiro.apache.org/documentation.html
+  tags:
+  - Users
+  properties:
+  - type: OpenAPI
+    url: openapi/apache-shiro-users-api-openapi.yml
+  - type: Documentation
+    url: https://shiro.apache.org/documentation.html
   - type: X-NaftikoCapability
     url: capabilities/rest-authentication.yaml
   - type: X-NaftikoCapability
