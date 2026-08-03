@@ -1,0 +1,22 @@
+{
+  "provider": "apache-shiro",
+  "sources": [
+    "apache-shiro-authentication-api-openapi.yml",
+    "apache-shiro-authorization-api-openapi.yml",
+    "apache-shiro-cryptography-api-openapi.yml",
+    "apache-shiro-sessions-api-openapi.yml",
+    "apache-shiro-users-api-openapi.yml"
+  ],
+  "outputs": [
+    "apache-shiro-authentication-api-openapi.yml",
+    "apache-shiro-authorization-api-openapi.yml",
+    "apache-shiro-cryptography-api-openapi.yml",
+    "apache-shiro-sessions-api-openapi.yml",
+    "apache-shiro-users-api-openapi.yml"
+  ],
+  "archived": [],
+  "errors": [],
+  "warnings": [],
+  "notes": [],
+  "skipped": []
+}
