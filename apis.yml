@@ -43,16 +43,6 @@ apis:
     url: openapi/apache-shiro-authentication-api-openapi.yml
   - type: Documentation
     url: https://shiro.apache.org/documentation.html
-  - type: X-NaftikoCapability
-    url: capabilities/rest-authentication.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/rest-authorization.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/rest-cryptography.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/rest-sessions.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/rest-users.yaml
 - aid: apache-shiro:apache-shiro-authorization-api
   name: Apache Shiro Authorization API
   description: The Authorization API from Apache Shiro — 2 operation(s) for authorization.
@@ -64,16 +54,6 @@ apis:
     url: openapi/apache-shiro-authorization-api-openapi.yml
   - type: Documentation
     url: https://shiro.apache.org/documentation.html
-  - type: X-NaftikoCapability
-    url: capabilities/rest-authentication.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/rest-authorization.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/rest-cryptography.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/rest-sessions.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/rest-users.yaml
 - aid: apache-shiro:apache-shiro-cryptography-api
   name: Apache Shiro Cryptography API
   description: The Cryptography API from Apache Shiro — 1 operation(s) for cryptography.
@@ -85,16 +65,6 @@ apis:
     url: openapi/apache-shiro-cryptography-api-openapi.yml
   - type: Documentation
     url: https://shiro.apache.org/documentation.html
-  - type: X-NaftikoCapability
-    url: capabilities/rest-authentication.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/rest-authorization.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/rest-cryptography.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/rest-sessions.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/rest-users.yaml
 - aid: apache-shiro:apache-shiro-sessions-api
   name: Apache Shiro Sessions API
   description: The Sessions API from Apache Shiro — 1 operation(s) for sessions.
@@ -106,16 +76,6 @@ apis:
     url: openapi/apache-shiro-sessions-api-openapi.yml
   - type: Documentation
     url: https://shiro.apache.org/documentation.html
-  - type: X-NaftikoCapability
-    url: capabilities/rest-authentication.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/rest-authorization.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/rest-cryptography.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/rest-sessions.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/rest-users.yaml
 - aid: apache-shiro:apache-shiro-users-api
   name: Apache Shiro Users API
   description: The Users API from Apache Shiro — 1 operation(s) for users.
@@ -127,16 +87,6 @@ apis:
     url: openapi/apache-shiro-users-api-openapi.yml
   - type: Documentation
     url: https://shiro.apache.org/documentation.html
-  - type: X-NaftikoCapability
-    url: capabilities/rest-authentication.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/rest-authorization.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/rest-cryptography.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/rest-sessions.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/rest-users.yaml
 maintainers:
 - FN: Kin Lane
   email: info@apievangelist.com
