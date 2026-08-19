@@ -1,0 +1,33 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Apache Shiro REST Authentication Cryptography API",
+    "version": "2.0.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Cryptography",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Apache Shiro Hash Password",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://app.example.com/api/crypto/hash",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Hash a password using Shiro cryptography with configurable algorithm and salt."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

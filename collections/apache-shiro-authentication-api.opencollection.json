@@ -1,0 +1,59 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Apache Shiro REST Authentication API",
+    "version": "2.0.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Authentication",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Apache Shiro Login",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://app.example.com/api/auth/login",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Authenticate a user with username and password credentials using Apache Shiro."
+        },
+        {
+          "info": {
+            "name": "Apache Shiro Logout",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://app.example.com/api/auth/logout"
+          },
+          "docs": "Invalidate the current Shiro session and log out the authenticated user."
+        },
+        {
+          "info": {
+            "name": "Apache Shiro Generate Token",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://app.example.com/api/auth/token",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Generate a JWT or remember-me token for stateless authentication."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

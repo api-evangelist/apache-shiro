@@ -1,0 +1,44 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Apache Shiro REST Authentication Users API",
+    "version": "2.0.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Users",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Apache Shiro List Users",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://app.example.com/api/users"
+          },
+          "docs": "List all users in the Shiro user store."
+        },
+        {
+          "info": {
+            "name": "Apache Shiro Create User",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://app.example.com/api/users",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Create a new user in the Shiro user store."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

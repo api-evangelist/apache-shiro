@@ -1,0 +1,125 @@
+{
+  "item": [
+    {
+      "id": "83915b48-5dd2-43e4-9526-be435f873b98",
+      "name": "Cryptography",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "a950e78c-43f4-40d1-9cac-de1ad0e53fef",
+          "name": "Apache Shiro Hash Password",
+          "request": {
+            "name": "Apache Shiro Hash Password",
+            "description": {
+              "content": "Hash a password using Shiro cryptography with configurable algorithm and salt.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "crypto",
+                "hash"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"password\": \"<string>\",\n  \"algorithm\": \"<string>\",\n  \"iterations\": \"<integer>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "b411ad1d-654b-4d5a-a54b-d378d0b84046",
+              "name": "Hash result",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "crypto",
+                    "hash"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"password\": \"<string>\",\n  \"algorithm\": \"<string>\",\n  \"iterations\": \"<integer>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"hash\": \"string\",\n  \"salt\": \"string\",\n  \"algorithm\": \"string\",\n  \"iterations\": 4870\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://app.example.com/api",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "1d308a07-85a0-449d-9c60-e7cbb2d908a4",
+    "name": "Apache Shiro REST Authentication Cryptography API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "Apache Shiro is a powerful Java security framework that performs authentication, authorization, cryptography, and session management. This OpenAPI represents the logical REST surface of a Shiro-secured application providing auth and session management endpoints.\n\nContact Support:\n Name: Apache Shiro",
+      "type": "text/plain"
+    }
+  }
+}

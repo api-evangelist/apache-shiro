@@ -1,0 +1,44 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Apache Shiro REST Authentication Authorization API",
+    "version": "2.0.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Authorization",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Apache Shiro Check Permission",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://app.example.com/api/auth/check",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Check if the current authenticated subject has a specific permission."
+        },
+        {
+          "info": {
+            "name": "Apache Shiro Get Current Roles",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://app.example.com/api/auth/roles"
+          },
+          "docs": "Get all roles assigned to the currently authenticated subject."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}
