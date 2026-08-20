@@ -26,6 +26,14 @@ tags:
 - Java
 - Security
 - Apache
+- Open-Source
+tags_raw:
+- Authentication
+- Authorization
+- Cryptography
+- Java
+- Security
+- Apache
 - Open Source
 created: '2026-03-16'
 modified: '2026-05-19'
@@ -81,6 +89,8 @@ apis:
   description: The Users API from Apache Shiro — 1 operation(s) for users.
   humanURL: https://shiro.apache.org/documentation.html
   tags:
+  - User
+  tags_raw:
   - Users
   properties:
   - type: OpenAPI
