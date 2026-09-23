@@ -1,6 +1,6 @@
-openapi: 3.0.3
+openapi: 3.2.0
 info:
-  title: Apache Shiro REST Authentication Cryptography API
+  title: Apache Shiro REST Cryptography API
   description: Apache Shiro is a powerful Java security framework that performs authentication, authorization, cryptography, and session management. This OpenAPI represents the logical REST surface of a Shiro-secured application providing auth and session management endpoints.
   version: 2.0.0
   contact:
@@ -39,6 +39,22 @@ paths:
                 $ref: '#/components/schemas/HashResult'
 components:
   schemas:
+    HashResult:
+      type: object
+      description: Password hash result
+      properties:
+        hash:
+          type: string
+          description: Hashed password value
+        salt:
+          type: string
+          description: Salt used for hashing
+        algorithm:
+          type: string
+          description: Algorithm used
+        iterations:
+          type: integer
+          description: Iterations applied
     HashRequest:
       type: object
       description: Password hashing request
@@ -61,19 +77,3 @@ components:
         iterations:
           type: integer
           description: Number of hash iterations
-    HashResult:
-      type: object
-      description: Password hash result
-      properties:
-        hash:
-          type: string
-          description: Hashed password value
-        salt:
-          type: string
-          description: Salt used for hashing
-        algorithm:
-          type: string
-          description: Algorithm used
-        iterations:
-          type: integer
-          description: Iterations applied

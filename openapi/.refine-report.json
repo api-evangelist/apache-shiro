@@ -1,11 +1,7 @@
 {
   "provider": "apache-shiro",
   "sources": [
-    "apache-shiro-authentication-api-openapi.yml",
-    "apache-shiro-authorization-api-openapi.yml",
-    "apache-shiro-cryptography-api-openapi.yml",
-    "apache-shiro-sessions-api-openapi.yml",
-    "apache-shiro-users-api-openapi.yml"
+    "_original/apache-shiro-rest-api.yaml"
   ],
   "outputs": [
     "apache-shiro-authentication-api-openapi.yml",
@@ -17,6 +13,21 @@
   "archived": [],
   "errors": [],
   "warnings": [],
-  "notes": [],
-  "skipped": []
+  "notes": [
+    "sourced from openapi/_original/ (1 archived document(s)); previously refined output at the top level was skipped rather than re-split",
+    "apache-shiro-rest-api.yaml: upgraded openapi 3.0.3 -> OpenAPI 3.2.0",
+    "apache-shiro-rest-api.yaml: declared missing tag: Authentication",
+    "apache-shiro-rest-api.yaml: declared missing tag: Authorization",
+    "apache-shiro-rest-api.yaml: declared missing tag: Cryptography",
+    "apache-shiro-rest-api.yaml: declared missing tag: Sessions",
+    "apache-shiro-rest-api.yaml: declared missing tag: Users",
+    "apis.yml register: already-registered"
+  ],
+  "skipped": [
+    "apache-shiro-authentication-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "apache-shiro-authorization-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "apache-shiro-cryptography-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "apache-shiro-sessions-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "apache-shiro-users-api-openapi.yml: previously refined output, superseded by openapi/_original/"
+  ]
 }
