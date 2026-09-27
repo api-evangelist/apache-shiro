@@ -37,7 +37,7 @@ tags:
 - Java
 - Security
 - Apache
-- Open-Source
+- Open Source
 tags_raw:
 - Authentication
 - Authorization
@@ -46,6 +46,7 @@ tags_raw:
 - Security
 - Apache
 - Open Source
+- Open-Source
 created: '2026-03-16'
 modified: '2026-05-19'
 url: https://raw.githubusercontent.com/api-evangelist/apache-shiro/refs/heads/main/apis.yml

@@ -55,18 +55,6 @@ paths:
                 $ref: '#/components/schemas/RoleList'
 components:
   schemas:
-    RoleList:
-      type: object
-      description: List of roles for the current user
-      properties:
-        principal:
-          type: string
-          description: Current principal
-        roles:
-          type: array
-          items:
-            type: string
-          description: Assigned roles
     PermissionCheckResult:
       type: object
       description: Result of permission check
@@ -80,6 +68,18 @@ components:
         principal:
           type: string
           description: Subject being checked
+    RoleList:
+      type: object
+      description: List of roles for the current user
+      properties:
+        principal:
+          type: string
+          description: Current principal
+        roles:
+          type: array
+          items:
+            type: string
+          description: Assigned roles
     PermissionCheckRequest:
       type: object
       description: Permission check request

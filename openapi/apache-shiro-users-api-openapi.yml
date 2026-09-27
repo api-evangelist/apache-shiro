@@ -54,6 +54,16 @@ paths:
                 $ref: '#/components/schemas/User'
 components:
   schemas:
+    UserList:
+      type: object
+      description: List of users
+      properties:
+        users:
+          type: array
+          items:
+            $ref: '#/components/schemas/User'
+        total:
+          type: integer
     UserRequest:
       type: object
       description: Request to create a user
@@ -71,16 +81,6 @@ components:
           type: array
           items:
             type: string
-    UserList:
-      type: object
-      description: List of users
-      properties:
-        users:
-          type: array
-          items:
-            $ref: '#/components/schemas/User'
-        total:
-          type: integer
     User:
       type: object
       description: User account
