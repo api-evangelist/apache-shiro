@@ -55,19 +55,6 @@ paths:
                 $ref: '#/components/schemas/RoleList'
 components:
   schemas:
-    PermissionCheckResult:
-      type: object
-      description: Result of permission check
-      properties:
-        permission:
-          type: string
-          description: Checked permission string
-        permitted:
-          type: boolean
-          description: Whether the subject has the permission
-        principal:
-          type: string
-          description: Subject being checked
     RoleList:
       type: object
       description: List of roles for the current user
@@ -89,3 +76,16 @@ components:
         permission:
           type: string
           description: Shiro permission string (e.g. printer:print, user:edit:123)
+    PermissionCheckResult:
+      type: object
+      description: Result of permission check
+      properties:
+        permission:
+          type: string
+          description: Checked permission string
+        permitted:
+          type: boolean
+          description: Whether the subject has the permission
+        principal:
+          type: string
+          description: Subject being checked

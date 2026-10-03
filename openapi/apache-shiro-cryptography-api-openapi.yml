@@ -39,22 +39,6 @@ paths:
                 $ref: '#/components/schemas/HashResult'
 components:
   schemas:
-    HashResult:
-      type: object
-      description: Password hash result
-      properties:
-        hash:
-          type: string
-          description: Hashed password value
-        salt:
-          type: string
-          description: Salt used for hashing
-        algorithm:
-          type: string
-          description: Algorithm used
-        iterations:
-          type: integer
-          description: Iterations applied
     HashRequest:
       type: object
       description: Password hashing request
@@ -77,3 +61,19 @@ components:
         iterations:
           type: integer
           description: Number of hash iterations
+    HashResult:
+      type: object
+      description: Password hash result
+      properties:
+        hash:
+          type: string
+          description: Hashed password value
+        salt:
+          type: string
+          description: Salt used for hashing
+        algorithm:
+          type: string
+          description: Algorithm used
+        iterations:
+          type: integer
+          description: Iterations applied
