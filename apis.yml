@@ -113,6 +113,9 @@ maintainers:
 - FN: Kin Lane
   email: info@apievangelist.com
 common:
+- type: CapabilityMap
+  url: capabilities/apache-shiro-capability-edges.yml
+  name: Apache Shiro Business Capability Map
 - type: Website
   url: https://www.apache.org/
 - type: AgenticAccess

@@ -1,0 +1,54 @@
+slug: apache-shiro
+provider: Apache Shiro
+generated_by: planning/capability-mapping/scripts/classify_capabilities.py
+model: claude-opus-5
+frame:
+- Software & Technology
+min_confidence: 0.7
+capability_model:
+  source: https://github.com/vincentmakes/turbo-ea-capabilities
+  license: CC-BY-4.0
+  attribution: Turbo EA Capabilities by Vincent Verdet — Turbo EA, https://github.com/vincentmakes/turbo-ea-capabilities,
+    CC BY 4.0
+  notice: NOTICE
+edge_count: 4
+edges:
+- tag: Authentication
+  spec_file: apache-shiro-authentication-api-openapi.yml
+  capability_id: BC-620.20
+  capability_id_l1: BC-620
+  capability_name: Identity & Access Management
+  confidence: 0.88
+  evidence: POST /auth/login "Apache Shiro Login", POST /auth/logout, POST /auth/token "Generate Token"
+  reason: Login, logout and token issuance are plainly authentication mechanics, which sit under Identity
+    & Access Management in the Cybersecurity L1. The vendor is a security framework, so the capability
+    is the honest cross-industry IT security one.
+- tag: Authorization
+  spec_file: apache-shiro-authorization-api-openapi.yml
+  capability_id: BC-620.20
+  capability_id_l1: BC-620
+  capability_name: Identity & Access Management
+  confidence: 0.88
+  evidence: POST /auth/check "Check Permission"; GET /auth/roles "Get Current Roles"; schemas RoleList,
+    PermissionCheckResult
+  reason: Permission checks and role retrieval are access control enforcement — Identity & Access Management.
+    No other candidate covers authorisation.
+- tag: Sessions
+  spec_file: apache-shiro-sessions-api-openapi.yml
+  capability_id: BC-620.20
+  capability_id_l1: BC-620
+  capability_name: Identity & Access Management
+  confidence: 0.78
+  evidence: GET /sessions/{sessionId} "Get Session"; DELETE /sessions/{sessionId} "Invalidate Session"
+  reason: Session lifecycle and invalidation are part of authenticated access control for a security framework,
+    mapping to Identity & Access Management rather than any business capability.
+- tag: Cryptography
+  spec_file: apache-shiro-cryptography-api-openapi.yml
+  capability_id: BC-620
+  capability_id_l1: BC-620
+  capability_name: Cybersecurity Management
+  confidence: 0.7
+  evidence: POST /crypto/hash  hashPassword  "Apache Shiro Hash Password"; schemas HashRequest, HashResult
+  reason: Password hashing is a security control primitive. It belongs under Cybersecurity Management
+    but the single operation does not clearly name a sub-capability (credential handling vs security architecture),
+    so only the L1 is asserted.
